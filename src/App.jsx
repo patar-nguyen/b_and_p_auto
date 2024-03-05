@@ -1,13 +1,20 @@
 import { useState } from 'react'
 import { LoginForm } from './Components/LoginForm'
-import './App.css'
+import { RegisterForm } from './Components/RegisterForm'
+import { HomePage } from './Components/HomePage'
+import { Routes, Route} from 'react-router-dom'
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <LoginForm />
-    </div>
+
+    <Routes>
+        <Route path="/home" element={<HomePage/>}></Route>
+
+        <Route path="/login" element={<LoginForm />}></Route>
+        <Route path="/register" element={<RegisterForm />}></Route>
+
+    </Routes>
   )
 }
 

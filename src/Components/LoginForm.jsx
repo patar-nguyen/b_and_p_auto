@@ -1,6 +1,8 @@
 import React from 'react'
-import './LoginForm.css'
+import { NavLink } from 'react-router-dom'
+import './Assets/LoginForm.css'
 import { FaUser, FaLock } from "react-icons/fa";
+
 export const LoginForm = () => {
   return (
     <div className="wrapper">
@@ -22,10 +24,10 @@ export const LoginForm = () => {
           <a href="#">Forgot password?</a>
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit"><NavLink to="/home">Login</NavLink></button>
 
         <div className="register-link">
-          <p>Don't have an account? <a href="#">Register</a></p>
+          <p>Don't have an account? <NavLink to="/register">Register</NavLink></p>
         </div>
         
       </form>

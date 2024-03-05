@@ -1,12 +1,3 @@
-
-body {
-  background: url('./car.jpeg') no-repeat;
-  background-size: cover;
-  background-position: center;
-  margin: 0; /* Reset default margin */
-  padding: 0; /* Reset default padding */
-}
-
 .wrapper {
   width: 420px;
   background: transparent;
@@ -52,32 +43,6 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-}
-
-.wrapper .remember-me {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin: -15px 0 15px;
-}
-
-.remember-me label input {
-  accent-color: white;
-  margin-right: 4px;
-}
-
-.remember-me label input[type="checkbox"] {
-  border: 2px solid white;
-  background: white;
-}
-
-.remember-me a {
-  text-decoration: none;
-  color: white;
-}
-
-.remember-me a:hover {
-  text-decoration: underline;
 }
 
 .wrapper button {
