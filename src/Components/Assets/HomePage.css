@@ -1,8 +1,11 @@
-.home-page {
-  background: white !important;
-  width: 100; /* Set the width to 100% to fill the entire width of its parent container */
-  height: 100vh; /* Set the height to 100vh to fill the entire viewport height */
-  display: flex; /* Ensure the content is centered horizontally and vertically */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+.wrap {
+  width: 420px;
+  height: 200px;
+  background: transparent;
+  backdrop-filter: blur(30px);
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 30px;
+  
 }
