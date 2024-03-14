@@ -24,10 +24,10 @@ export const LoginForm = () => {
           <a href="#">Forgot password?</a>
         </div>
 
-        <button type="submit"><NavLink to="/home">Login</NavLink></button>
+        <button type="submit"><NavLink to="/home" className="login-link">Login</NavLink></button>
 
         <div className="register-link">
-          <p>Don't have an account? <NavLink to="/register">Register</NavLink></p>
+          <p>Don't have an account? <NavLink to="/register" className="register-click">Register</NavLink></p>
         </div>
         
       </form>

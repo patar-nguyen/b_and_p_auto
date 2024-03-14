@@ -106,8 +106,8 @@ export const RegisterForm = () => {
 
         <button type="submit">Register</button>
 
-        <div className="register-link">
-          <p>Already have an account? <NavLink to="/login">Sign In</NavLink></p>
+        <div className="login-link">
+          <p>Already have an account? <NavLink to="/login" className="login-click">Sign In</NavLink></p>
         </div>
         
       </form>
