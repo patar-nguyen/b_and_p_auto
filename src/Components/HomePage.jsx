@@ -1,8 +1,18 @@
 import React, { useState, useEffect }  from 'react'
 import './Assets/HomePage.css'
 import axios from 'axios';
+import { Navbar } from './Navbar'
 
 export const HomePage = () => {
+
+  return (
+    <div>
+      <Navbar />
+    </div>
+
+  )
+}
+
 
   // const [data, setData] = useState([])
 
@@ -15,11 +25,3 @@ export const HomePage = () => {
   //     console.log(err)
   //   })
   // }, [])
-
-  return (
-    <div className="wrap">
-      {/* <p>{data.email}</p> */}
-    </div>
-
-  )
-}

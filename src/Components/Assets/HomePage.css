@@ -1,10 +1,8 @@
 .wrap {
   width: 420px;
   height: 200px;
-  background: transparent;
-  backdrop-filter: blur(30px);
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid black;
+  color: black;
   border-radius: 10px;
   padding: 30px 30px;
   
