@@ -1,6 +1,13 @@
 nav {
-  background-color: green;
+  /* background-color: #e41b1f;
+  box-shadow: 3px 3px 5px rgba(0,0,0, 0.1); */
+  position: fixed; /* Fixed position to keep Navbar at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%; /* Occupy the full width of the viewport */
+  background-color: #e41b1f;
   box-shadow: 3px 3px 5px rgba(0,0,0, 0.1);
+  z-index: 1000; /* Ensure Navbar is above other content */
 }
 
 nav ul {
