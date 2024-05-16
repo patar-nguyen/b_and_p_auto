@@ -15,9 +15,38 @@ app.post("/users", async (req, res) => {
     const { username, password } = req.body;
     const newUser = await pool.query("INSERT INTO users (username, password) VALUES($1, $2) RETURNING *", 
     [username, password]);
-    res.json(newUser);
+    res.json(newUser.rows[0]);
 
   } catch (err){
     console.log(err.message);
+  }
+})
+
+app.get("/users/:username", async (req, res) => {
+  try {
+    const { username } = req.params;
+    const user = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
+    
+    if (user.rows.length == 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user.rows[0])
+  } catch (err){
+    console.error(err.message);
+  }
+})
+
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await pool.query("SELECT * FROM users WHERE username = $1 AND password = $2", [username, password]);
+    
+    if (user.rows.length == 0) {
+      return res.status(404).json({ message: "Invalid username or password"});
+    }
+
+    res.json({ message: "Successful login" })
+  } catch (err) {
+    console.error(err.message);
   }
 })
