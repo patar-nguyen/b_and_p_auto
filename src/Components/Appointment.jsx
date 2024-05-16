@@ -3,12 +3,26 @@ import { Navbar } from './Navbar'
 import './Assets/Appointment.css'
 
 export const Appointment = () => {
-  const services = ["Oil Change", "Brake Change"];
+  const services = ["Oil change", 
+  "Transmission oil change", 
+  "Brake change", 
+  "Tire change", 
+  "Tire rotation", 
+  "Car wash"
+];
 
-  const [service, setService] = useState("");
   const [firstPage, setFirstPage] = useState(true);
-
   const [secPage, setSecPage] = useState(false);
+
+  const [service, setService] = useState('');
+  const [make, setMake] = useState('');
+  const [model, setModel] = useState('');
+  const [year, setYear] = useState('');
+  const [vin, setVin] = useState('');
+  const [plate, setPlate] = useState('');
+  const [mileage, setMileage] = useState('');
+  const [description, setDescription] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,27 +44,27 @@ export const Appointment = () => {
           <h1>Enter Car Details</h1>
 
           <div className="inputbox">
-            <input type="text" placeholder="Car Make" required />
+            <input type="text" placeholder="Car Make" value={make} onChange={(e)=>{setMake(e.target.value)}} required />
           </div> 
 
           <div className="inputbox">
-            <input type="text" placeholder="Car Model" required />
+            <input type="text" placeholder="Car Model" value={model} onChange={(e)=>setModel(e.target.value)} required />
           </div> 
 
           <div className="inputbox">
-            <input type="text" placeholder="Year" required />
+            <input type="text" placeholder="Year" value={year} onChange={(e)=>setYear(e.target.value)} required />
           </div> 
 
           <div className="inputbox">
-            <input type="text" placeholder="VIN" required />
+            <input type="text" placeholder="VIN" value={vin} onChange={(e)=>setVin(e.target.value)} required />
           </div> 
 
           <div className="inputbox">
-            <input type="text" placeholder="License Plate" required />
+            <input type="text" placeholder="License Plate" value={plate} onChange={(e)=>setPlate(e.target.value)} required />
           </div> 
 
           <div className="inputbox">
-            <input type="text" placeholder="Mileage" required />
+            <input type="text" placeholder="Mileage" value={mileage} onChange={(e)=>setMileage(e.target.value)} required />
           </div> 
 
           <button type="submit">Next</button>
@@ -72,8 +86,8 @@ export const Appointment = () => {
             </select>
           </div> 
 
-          <div className="inputbox">
-            <input type="text" placeholder="Description" required />
+          <div className="description">
+            <textarea type="text" placeholder="Description" value={description} onChange={(e)=>setDescription(e.target.value)} required />
           </div> 
 
           <button type="submit">Next</button>

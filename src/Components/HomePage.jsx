@@ -18,8 +18,10 @@ export const HomePage = () => {
 
   return (
     <div>
-     <h1>{data.userName}</h1>
-      {/* <Navbar /> */}
+      <Navbar />
+      <div className="mainBody">
+        <p>testtest</p>
+      </div>
     </div>
 
   )
