@@ -11,6 +11,24 @@ export const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    //USING PROMISE
+    // axios.post('http://localhost:3000/login', {
+    //   username,
+    //   password
+    // })
+    // .then(res => {
+    //   if (res.status == 200) {
+    //     window.location.href = "/home";
+    //     console.log("user found");
+    //   } else {
+    //     console.error("login failed");
+    //   }
+    // })
+    // .catch(err => {
+    //   console.error("error: ", err);
+    // });
+
+    //USING TRY CATCH
     try {
       const response = await axios.post('http://localhost:3000/login', {
         username,

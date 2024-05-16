@@ -11,6 +11,18 @@ app.listen(3000, () => {
 });
 
 app.post("/users", async (req, res) => {
+
+  // USING PROMISE
+  // const { username, password } = req.body;
+  // pool.query("INSERT INTO users (username, password) VALUES($1, $2) RETURNING *", [username, password])
+  //   .then(newUser => {
+  //     res.json(newUser.rows[0]);
+  //   })
+  //   .catch(err => {
+  //     console.log(err.message);
+  //     res.status(500).json({ error: "Internal Server Error" });
+  //   });
+
   try {
     const { username, password } = req.body;
     const newUser = await pool.query("INSERT INTO users (username, password) VALUES($1, $2) RETURNING *", 
