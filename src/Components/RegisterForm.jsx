@@ -6,89 +6,106 @@ import axios from 'axios';
 
 export const RegisterForm = () => {
   
-  const provinces = ["NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"];
+  // const provinces = ["NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"];
 
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [province, setProvince] = useState('');
-  const [zipcode, setZipcode] = useState('');
-  const [country, setCountry] = useState('');
 
+  // const [email, setEmail] = useState('');
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
+  // const [dateOfBirth, setDateOfBirth] = useState('');
+  // const [street, setStreet] = useState('');
+  // const [city, setCity] = useState('');
+  // const [province, setProvince] = useState('');
+  // const [zipcode, setZipcode] = useState('');
+  // const [country, setCountry] = useState('');
 
-  const onSubmitForm = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    var userAccount = {
-      "userName": userName,
-      "password": password,
-      "email": email,
-      "firstName": firstName,
-      "lastName": lastName,
-      "dateOfBirth": dateOfBirth,
-      "street": street,
-      "city": city,
-      "province": province,
-      "zipcode": zipcode,
-      "country": country
+
+    try {
+      const response = await axios.post("http://localhost:3000/register", { username, password })
+      
+      if (response.status == 200) {
+        console.log("User created");
+      } else {
+        console.error("User creation failed");
+      }
+    
+    } catch (err) {
+      console.error(err.message);
     }
-    console.log(JSON.stringify(userAccount));
-    axios.post("http://99.234.6.118:50023/UserAccount", 
-    JSON.stringify(userAccount), 
-    {headers: { "Content-Type": "application/json"}})
-    .then(res => console.log(res))
-    .catch(err => console.log(err.response.data))
   }
+
+  // const onSubmitForm = (e) => {
+  //   e.preventDefault();
+  //   var userAccount = {
+  //     "userName": userName,
+  //     "password": password,
+  //     "email": email,
+  //     "firstName": firstName,
+  //     "lastName": lastName,
+  //     "dateOfBirth": dateOfBirth,
+  //     "street": street,
+  //     "city": city,
+  //     "province": province,
+  //     "zipcode": zipcode,
+  //     "country": country
+  //   }
+  //   console.log(JSON.stringify(userAccount));
+  //   axios.post("http://99.234.6.118:50023/UserAccount", 
+  //   JSON.stringify(userAccount), 
+  //   {headers: { "Content-Type": "application/json"}})
+  //   .then(res => console.log(res))
+  //   .catch(err => console.log(err.response.data))
+  // }
 
   return (
     <div className="wrapper2">
-      <form onSubmit={onSubmitForm}>
+      <form onSubmit={handleSubmit}>
         <h1>Register</h1>
 
         <div className="input-box2">
-          <input type="text" placeholder="Username" value={userName} onChange={e => {setUserName(e.target.value)}}required />
+          <input type="text" placeholder="Username" value={username} onChange={e => {setUsername(e.target.value)}} required />
           <FaUser className="icon"/>
         </div>
 
         <div className="input-box2">
-          <input type="text" placeholder="Password" value={password} onChange={e => {setPassword(e.target.value)}}required />
+          <input type="text" placeholder="Password" value={password} onChange={e => {setPassword(e.target.value)}} required />
           <FaLock className="icon"/>
         </div>
 
-        <div className="input-box2">
-          <input type="text" placeholder="Email" value={email} onChange={e => {setEmail(e.target.value)}} required />
+        {/* <div className="input-box2">
+          <input type="text" placeholder="Email" required />
         </div>
 
 
         <div className="input-box2">
-          <input type="text" placeholder="First Name" value={firstName} onChange={e => {setFirstName(e.target.value)}} required />
+          <input type="text" placeholder="First Name" required />
         </div>
 
 
         <div className="input-box2">
-          <input type="text" placeholder="Last Name" value={lastName} onChange={e => {setLastName(e.target.value)}} required />
+          <input type="text" placeholder="Last Name" required />
         </div>
 
 
         <div className="input-box2">
-          <input type="text" placeholder="Date of Birth" value={dateOfBirth} onChange={e => {setDateOfBirth(e.target.value)}} required />
+          <input type="text" placeholder="Date of Birth" required />
         </div>
 
 
         <div className="input-box2">
-          <input type="text" placeholder="Street Address" value={street} onChange={e => {setStreet(e.target.value)}}/>
+          <input type="text" placeholder="Street Address" />
         </div>
 
         <div className="input-box2">
-          <input type="text" placeholder="City" value={city} onChange={e => {setCity(e.target.value)}} />
+          <input type="text" placeholder="City" />
         </div>
 
         <div className="input-box2">
-          <select id="province" value={province} onChange={e => {setProvince(e.target.value)}}>
+          <select id="province">
             <option value="">--Select--</option>
             {provinces.map((province) => (
               <option key={province} value={province}>{province}</option>
@@ -97,12 +114,12 @@ export const RegisterForm = () => {
         </div>
 
         <div className="input-box2">
-          <input type="text" placeholder="Zip Code" value={zipcode} onChange={e => {setZipcode(e.target.value)}} required />
+          <input type="text" placeholder="Zip Code" required />
         </div>
 
         <div className="input-box2">
-          <input type="text" placeholder="Country" value={country} onChange={e => {setCountry(e.target.value)}}required />
-        </div>
+          <input type="text" placeholder="Country" required />
+        </div> */}
 
         <button type="submit">Register</button>
 

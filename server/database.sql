@@ -2,9 +2,8 @@ CREATE DATABASE bandpauto;
 
 CREATE TABLE users(
   user_id SERIAL PRIMARY KEY,
-  username VARCHAR(50) UNIQUE NOT NULL,
-  password VARCHAR(50) NOT NULL,
-  logged_in BOOLEAN DEFAULT FALSE
+  username VARCHAR(250) UNIQUE NOT NULL,
+  password VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE maintenance(
