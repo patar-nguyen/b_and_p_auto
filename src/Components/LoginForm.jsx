@@ -8,6 +8,8 @@ export const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  axios.defaults.withCredentials = true;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

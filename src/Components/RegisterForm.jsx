@@ -6,20 +6,10 @@ import axios from 'axios';
 
 export const RegisterForm = () => {
   
-  // const provinces = ["NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"];
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  // const [email, setEmail] = useState('');
-  // const [firstName, setFirstName] = useState('');
-  // const [lastName, setLastName] = useState('');
-  // const [dateOfBirth, setDateOfBirth] = useState('');
-  // const [street, setStreet] = useState('');
-  // const [city, setCity] = useState('');
-  // const [province, setProvince] = useState('');
-  // const [zipcode, setZipcode] = useState('');
-  // const [country, setCountry] = useState('');
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
