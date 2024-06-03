@@ -82,23 +82,40 @@ app.get("/login", async (req, res) => {
 
 app.post("/maintenance", async (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ message: "unauthorized" })
+    return res.status(401).json({ message: "unauthorized" });
   }
 
   try {
-    const { make, model } = req.body;
+    const { make, model, year, vin, plate, mileage, service, description } = req.body;
     const user_id = req.session.user.id;
 
     const newMaintenance = await db.query(
-      "INSERT INTO maintenance (user_id, car_make, car_model) VALUES($1, $2, $3) RETURNING *",
-      [user_id, make, model]
+      "INSERT INTO maintenance (user_id, car_make, car_model, year, vin, plate, mileage, service, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+      [user_id, make, model, year, vin, plate, mileage, service, description]
     );
     res.status(200).json(newMaintenance.rows[0]);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: "internal server error" });
   }
-})
+});
+
+app.post("/logout", (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Error destroying session", err);
+        res.status(500).json({ error: "Failed to logout" });
+      } else {
+        res.clearCookie("sid");
+        res.status(200).json({ message: "Logout successful" });
+      }
+    });
+  } catch (err) {
+    console.error("Error during logout", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.get("/users/:username", async (req, res) => {
   try {

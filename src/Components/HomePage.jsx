@@ -27,9 +27,23 @@ export const HomePage = () => {
     checkLoginStatus();
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post("http://localhost:3000/logout");
+      if (res.status === 200) {
+        setLoggedIn(false);
+        setUser(null);
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (err) {
+      console.error("Error during logout", err);
+    }
+  }
+
   return (
     <div>
-      <Navbar />
+      <Navbar loggedIn={loggedIn} handleLogout={handleLogout} />
       <div className="mainBody">
         {loggedIn ? (
           <p>Welcome, {user.username}!</p>
