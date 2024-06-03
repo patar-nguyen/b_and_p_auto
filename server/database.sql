@@ -6,10 +6,9 @@ CREATE TABLE users(
   password VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE maintenance(
+CREATE TABLE maintenance (
   maintenance_id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES user(user_id),
+  user_id INT REFERENCES users(user_id),
   car_make VARCHAR(50) NOT NULL,
-  car_model VARCHAR(50) NOT NULL,
-  CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(user_id)
+  car_model VARCHAR(50) NOT NULL
 );

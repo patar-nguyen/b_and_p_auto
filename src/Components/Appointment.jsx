@@ -1,34 +1,56 @@
-import React, { useState } from 'react'
-import { Navbar } from './Navbar'
-import './Assets/Appointment.css'
+import React, { useState } from 'react';
+import { Navbar } from './Navbar';
+import './Assets/Appointment.css';
+import axios from 'axios';
+
 
 export const Appointment = () => {
-  const services = ["Oil change", 
-  "Transmission oil change", 
-  "Brake change", 
-  "Tire change", 
-  "Tire rotation", 
-  "Car wash"
-];
+  axios.defaults.withCredentials = true;
 
-  const [firstPage, setFirstPage] = useState(true);
-  const [secPage, setSecPage] = useState(false);
+//   const services = ["Oil change", 
+//   "Transmission oil change", 
+//   "Brake change", 
+//   "Tire change", 
+//   "Tire rotation", 
+//   "Car wash"
+// ];
 
-  const [service, setService] = useState('');
+  // const [firstPage, setFirstPage] = useState(true);
+  // const [secPage, setSecPage] = useState(false);
+
+  // const [service, setService] = useState('');
   const [make, setMake] = useState('');
   const [model, setModel] = useState('');
-  const [year, setYear] = useState('');
-  const [vin, setVin] = useState('');
-  const [plate, setPlate] = useState('');
-  const [mileage, setMileage] = useState('');
-  const [description, setDescription] = useState('');
+  // const [year, setYear] = useState('');
+  // const [vin, setVin] = useState('');
+  // const [plate, setPlate] = useState('');
+  // const [mileage, setMileage] = useState('');
+  // const [description, setDescription] = useState('');
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFirstPage(false);
-    setSecPage(true);
+
+    try {
+      const res = await axios.post("http://localhost:3000/maintenance", {
+      make,
+      model
+    });
+      if (res.status === 200) {
+        console.log("maintenance added");
+      } else {
+        console.error("failed to add maintenance");
+      }
+    } catch (error) {
+      console.error("Error occured")
+    }
   }
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setFirstPage(false);
+  //   setSecPage(true);
+  // }
 
   const handlePrevious = (e) => {
     e.preventDefault();
@@ -38,7 +60,7 @@ export const Appointment = () => {
   return (
     <div>
       <Navbar />
-      {firstPage && (<div className="wrap">
+      <div className="wrap">
         <form onSubmit={handleSubmit}>
 
           <h1>Enter Car Details</h1>
@@ -50,7 +72,7 @@ export const Appointment = () => {
           <div className="inputbox">
             <input type="text" placeholder="Car Model" value={model} onChange={(e)=>setModel(e.target.value)} required />
           </div> 
-
+{/* 
           <div className="inputbox">
             <input type="text" placeholder="Year" value={year} onChange={(e)=>setYear(e.target.value)} required />
           </div> 
@@ -65,14 +87,14 @@ export const Appointment = () => {
 
           <div className="inputbox">
             <input type="text" placeholder="Mileage" value={mileage} onChange={(e)=>setMileage(e.target.value)} required />
-          </div> 
+          </div>  */}
 
           <button type="submit">Next</button>
 
         </form>
-      </div>)}
+      </div>
 
-    {secPage && (
+    {/* {secPage && (
       <div className="wrap">
         <form>
         <h1>Maintenance Activity</h1>
@@ -95,6 +117,6 @@ export const Appointment = () => {
 
         </form>
       </div>
-    )}
+    )} */}
     </div>
 )}

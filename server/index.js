@@ -72,13 +72,33 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/login", (req, res) => {
+app.get("/login", async (req, res) => {
   if (req.session.user) {
     res.json({ loggedIn: true, user: req.session.user });
   } else {
     res.json({ loggedIn: false });
   }
 });
+
+app.post("/maintenance", async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ message: "unauthorized" })
+  }
+
+  try {
+    const { make, model } = req.body;
+    const user_id = req.session.user.id;
+
+    const newMaintenance = await db.query(
+      "INSERT INTO maintenance (user_id, car_make, car_model) VALUES($1, $2, $3) RETURNING *",
+      [user_id, make, model]
+    );
+    res.status(200).json(newMaintenance.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "internal server error" });
+  }
+})
 
 app.get("/users/:username", async (req, res) => {
   try {
