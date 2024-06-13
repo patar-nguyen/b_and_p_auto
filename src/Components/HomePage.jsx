@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Assets/HomePage.css';
 import axios from 'axios';
 import { Navbar } from './Navbar';
+import { Footer } from './Footer';
 
 export const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -43,14 +44,15 @@ export const HomePage = () => {
 
   return (
     <div>
-      <Navbar loggedIn={loggedIn} handleLogout={handleLogout} />
-      <div className="mainBody">
-        {loggedIn ? (
-          <p>Welcome, {user.username}!</p>
-        ) : (
-          <p>Please log in.</p>
-        )}
-      </div>
+          <Navbar loggedIn={loggedIn} handleLogout={handleLogout} />
+          <div className="mainBody">
+            {loggedIn ? (
+              <p>Welcome, {user.username}!</p>
+            ) : (
+              <p>Please log in.</p>
+            )}
+          </div>
+          <Footer />
     </div>
   );
 };

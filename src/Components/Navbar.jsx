@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom';
-import './Assets/Navbar.css'
+import './Assets/Navbar.css';
 
 export const Navbar = ({ loggedIn, handleLogout}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,7 +21,7 @@ export const Navbar = ({ loggedIn, handleLogout}) => {
           {loggedIn ? (
             <>
              <li className="hideOnMobile"><NavLink to="/appointment">Appointment</NavLink></li>
-             <li className="hideOnMobile"><button onClick={handleLogout} className="signoutbtn">Signout</button></li>
+             <li className="hideOnMobile"><NavLink to="/home" onClick={handleLogout}>Sign out</NavLink></li>
             </>
           ) : (
             <>
@@ -37,7 +37,8 @@ export const Navbar = ({ loggedIn, handleLogout}) => {
           <li onClick={hideSidebar}><a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
           {loggedIn ? (
             <>
-              <li><button onClick={handleLogout} className="signoutbtn">Sign out</button></li>
+              <li><NavLink to="/home" onClick={handleLogout}>Sign out</NavLink></li>
+              <li><NavLink to="/appointment">Appointment</NavLink></li>
             </>
           ) : (
             <>
