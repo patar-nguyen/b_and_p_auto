@@ -1,26 +1,58 @@
 /* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Takes remaining height */
+}
+
+.mainBody {
+  flex: 1; /* This will make sure the main content takes the remaining space */
+  padding: 1em;
+}
 
 .main-footer {
   width: 100%;
   padding: 2em 0;
   background-color: #e41b1f;
   color: black;
+  margin-top: auto; /* Push footer to the bottom */
 }
 
 .row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center columns with space-around */
   flex-wrap: wrap;
   width: 100%;
-  max-width: 90%; 
-  margin: 0 auto; 
-  padding: 0; 
+  max-width: 90%; /* Center content with max-width */
+  margin: 0 auto; /* Center horizontally */
+  padding: 0; /* Remove any padding */
 }
 
 .col {
-  flex: 1;
+  flex: 1 1 200px; /* Flex properties for equal width columns with minimum width */
   padding: 1em;
   min-width: 200px;
+  text-align: center;
 }
 
 h4 {
