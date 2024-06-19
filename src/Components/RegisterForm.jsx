@@ -62,54 +62,9 @@ export const RegisterForm = () => {
         </div>
 
         <div className="input-box2">
-          <input type="text" placeholder="Password" value={password} onChange={e => {setPassword(e.target.value)}} required />
+          <input type="password" placeholder="Password" value={password} onChange={e => {setPassword(e.target.value)}} required />
           <FaLock className="icon"/>
         </div>
-
-        {/* <div className="input-box2">
-          <input type="text" placeholder="Email" required />
-        </div>
-
-
-        <div className="input-box2">
-          <input type="text" placeholder="First Name" required />
-        </div>
-
-
-        <div className="input-box2">
-          <input type="text" placeholder="Last Name" required />
-        </div>
-
-
-        <div className="input-box2">
-          <input type="text" placeholder="Date of Birth" required />
-        </div>
-
-
-        <div className="input-box2">
-          <input type="text" placeholder="Street Address" />
-        </div>
-
-        <div className="input-box2">
-          <input type="text" placeholder="City" />
-        </div>
-
-        <div className="input-box2">
-          <select id="province">
-            <option value="">--Select--</option>
-            {provinces.map((province) => (
-              <option key={province} value={province}>{province}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="input-box2">
-          <input type="text" placeholder="Zip Code" required />
-        </div>
-
-        <div className="input-box2">
-          <input type="text" placeholder="Country" required />
-        </div> */}
 
         <button type="submit">Register</button>
 

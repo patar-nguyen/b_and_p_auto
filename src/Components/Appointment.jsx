@@ -14,6 +14,8 @@ export const Appointment = () => {
 
   const services = ["Oil change", 
   "Transmission oil change", 
+  "Air filter",
+  "Drivetrain",
   "Brake change", 
   "Tire change", 
   "Tire rotation", 

@@ -1,10 +1,7 @@
-.wrap {
-  width: 420px;
-  height: 200px;
-  border: 2px solid black;
-  color: black;
-  border-radius: 10px;
-  padding: 30px 30px;
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .mainBody {
@@ -20,8 +17,62 @@
   margin-top: 100px;
 }
 
-.home-container {
-  min-height: 100vh;
+.service-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.services-heading {
+  font-size: 2em; 
+  font-weight: bold; 
+  margin-bottom: 1em; 
+  text-align: center;
+}
+.services-heading2 {
+  font-size: 2em; 
+  font-weight: bold; 
+  margin-bottom: 1em; 
+  text-align: center;
+  margin-top: 2em;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 1em 0; /* Add spacing between paragraphs */
+  text-align: center;
+}
+
+.about-us-container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us-image {
+  max-width: 25%; /* Adjust the max-width as needed */
+  margin-right: 3em; /* Space between image and text */
+}
+
+.about-us-container p {
+  max-width: 50%;
+  text-align: left;
+}
+
+.mission-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mission-image {
+  max-width: 25%; /* Adjust the max-width as needed */
+  margin-right: 3em; /* Space between image and text */
+}
+
+.mission-container p {
+  max-width: 50%;
+  text-align: left;
 }
