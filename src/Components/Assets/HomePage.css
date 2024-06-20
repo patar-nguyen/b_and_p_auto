@@ -69,7 +69,7 @@ p {
 
 .mission-image {
   max-width: 25%; /* Adjust the max-width as needed */
-  margin-right: 3em; /* Space between image and text */
+  margin-left: 3em; /* Space between image and text */
 }
 
 .mission-container p {

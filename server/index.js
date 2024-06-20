@@ -131,3 +131,19 @@ app.get("/users/:username", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+app.get("/maintenance/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const maintenanceRecords = await db.query("SELECT * FROM maintenance WHERE user_id = $1", [userId])
+
+    if (records.rows.length === 0) {
+      return res.status(404).json({ message: "Maintenance record not found" });
+    }
+
+    res.status(200).json(maintenanceRecords.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+})

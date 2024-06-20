@@ -55,13 +55,10 @@ export const HomePage = () => {
         {loggedIn ? (
           <>
             <img src={serviceImage} alt="Logged in" className="service-image" />
-
           </>
         ) : (
           <>
             <img src={serviceImage} alt="Logged in" className="service-image" />
-
-
           </>
         )}
 

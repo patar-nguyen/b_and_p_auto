@@ -21,7 +21,7 @@ export const Navbar = ({ loggedIn, handleLogout }) => {
         {loggedIn ? (
           <>
             <li className="hideOnMobile"><NavLink to="/appointment">Make Appointment</NavLink></li>
-            <li className="hideOnMobile"><NavLink to="/appointment">History</NavLink></li>
+            <li className="hideOnMobile"><NavLink to="/maintenance">Maintenance Records</NavLink></li>
             <li className="hideOnMobile"><NavLink to="/home" onClick={handleLogout}>Sign out</NavLink></li>
           </>
         ) : (
@@ -39,7 +39,7 @@ export const Navbar = ({ loggedIn, handleLogout }) => {
         {loggedIn ? (
           <>
             <li><NavLink to="/appointment">Make Appointment</NavLink></li>
-            <li><NavLink to="/appointment">History</NavLink></li>
+            <li><NavLink to="/maintenance">Maintenance Records</NavLink></li>
             <li><NavLink to="/home" onClick={handleLogout}>Sign out</NavLink></li>
           </>
         ) : (
