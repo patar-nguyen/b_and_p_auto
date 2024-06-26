@@ -137,7 +137,7 @@ app.get("/maintenance/:userId", async (req, res) => {
     const { userId } = req.params;
     const maintenanceRecords = await db.query("SELECT * FROM maintenance WHERE user_id = $1", [userId])
 
-    if (records.rows.length === 0) {
+    if (maintenanceRecords.rows.length === 0) {
       return res.status(404).json({ message: "Maintenance record not found" });
     }
 
